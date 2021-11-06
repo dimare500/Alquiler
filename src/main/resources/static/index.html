@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/43d47bc77c.js"></script>
+    <base href="/" />
+    <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="estilo.css">
+    <title>Alquiler de computadores</title>
+</head>
+
+<body>
+
+    <div class="unauthenticated">
+        <h1 style="display: flex; flex-flow: column nowrap; background: rgba(153, 118, 118, 0.1); border-bottom: 1px solid rgba(0, 0, 0, 0.5); align-items: center;
+        height: 60px;">Alquiler de computadores</h1>
+        <h3>Para iniciar con GitHub <a href="/oauth2/authorization/github" style="text-decoration: none;">Click
+                aqui</a></h3>
+    </div>
+
+    <div class="authenticated" style="display: none;">
+        <div class="padre">
+            <header class="header">
+                <div class="menu margen-menu">
+                    <div class="logo">
+                        <a href="index.html">Alquiler de computadores</a>
+                    </div>
+                    <nav class="nav">
+                        <a href="computer/computer.html"><i class="fas fa-desktop"></i>Computadores</a>
+                        <a href="category/category.html"><i class="fas fa-list-ul"></i>Categorias</a>
+                        <a href="client/client.html"><i class="fas fa-users"></i>Clientes</a>
+                        <a href="reporte/reportes.html"><i class="fas fa-book-open"></i>Reportes</a>
+                    </nav>
+                    <div class="usuario">
+                        <a href="index.html"><i class="fas fa-user-circle"></i><span id="user"></span></a>
+                    </div>
+                </div>
+                <div class="texto margen-interno">
+                    <div class="texto-principal">
+                        <h1>Alquiler de computadores</h1>
+                        <h3>Optimice y ahorre costos con el alquiler de computadores y equipos tecnológicos.</h3>
+                    </div>
+                    <div class="imagen">
+                        <img src="imagenes/laptop.png">
+                    </div>
+                </div>
+            </header>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        $.get("/user", function (data) {
+            $("#user").html(data.name);
+            $(".unauthenticated").hide() /*hide() para esconder el contenedor*/
+            $(".authenticated").show() /*show() para mostrar el contenedor*/
+        });
+    </script>
+
+</body>
+
+</html>

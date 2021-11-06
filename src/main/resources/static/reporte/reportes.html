@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://kit.fontawesome.com/43d47bc77c.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script type="text/javascript" src="reportes.js"></script>
+    <link rel="stylesheet" href="reportes.css" />
+    <title>Reportes</title>
+  </head>
+  <body>
+    <div class="padre">
+      <header class="header">
+        <div class="menu margen-menu">
+          <div class="logo">
+            <a href="../index.html"><i class="fas fa-home"></i>Inicio</a>
+          </div>
+          <div class="titulo">
+            <h1>Reportes</h1>
+          </div>
+          <div class="usuario">
+            <a href="../index.html"
+              ><i class="fas fa-user-circle"></i><span id="user"></span
+            ></a>
+          </div>
+        </div>
+        <div class="informacion">
+          <div id="detalle"></div>
+          <div class="sub-titulo">
+            <h3>Reporte Status Reservas</h3>
+          </div>
+          <div id="detalle">
+            <button onclick="traerReporteStatus()">
+              Generar Reporte Status Reservas
+            </button>
+          </div>
+
+          <div>
+            <table>
+              <thead>
+                <tr>
+                  <th>Completadas</th>
+                  <th>Canceladas</th>
+                </tr>
+                <tbody id="itemReservas"></tbody>
+              </thead>
+            </table>
+          </div>
+          <div class="sub-titulo">
+            <h3>Reporte por fecha</h3>
+          </div>
+          <div id="detalle">
+            <input type="date" id="RstarDate" placeholder="descripcion" />
+            <input type="date" id="RdevolutionDate" placeholder="descripcion" />
+            <button onclick="traerReporteDate()">
+              Generar Reporte por fecha
+            </button>
+          </div>
+          <div>
+            <table>
+              <thead >
+                <tr>
+                  <th>Fecha de inicio</th>
+                  <th>Fecha final</th>
+                  <th>Status</th>
+                </tr>
+                <tbody id="itemsFechas"></tbody>
+              </thead>
+            </table>
+          </div>
+          <div class="sub-titulo">
+            <h3>Cantidad de reservas por cliente</h3>
+          </div>
+          <div id="detalle">
+            <button onclick="traerReporteClientes()">
+              Generar Reporte Clientes y Cantidad de reservas por cliente
+            </button>
+          </div>
+          <div>
+            <table>
+              <thead>
+                <tr>
+                  <th>Total Reservas</th>
+                  <th>Nombre cliente</th>
+                  <th>Correo</th>
+                  <th>Edad</th>
+                </tr>
+                <tbody id="ItemsCantReservas"></tbody>
+              </thead>
+            </table>
+          </div>
+        </div>
+      </header>
+    </div>
+
+    <script type="text/javascript">
+      $.get("/user", function (data) {
+        $("#user").html(data.name);
+      });
+    </script>
+  </body>
+</html>
